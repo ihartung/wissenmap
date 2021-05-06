@@ -1,0 +1,16 @@
+τέχνη,nominative/vocative-singular
+τέχνης,genitive-singular
+τέχνῃ,dative-singular
+τέχνην,accusative-singular
+τέχναι,nominative/vocative-plural
+τέχνῶν,genitive-plural
+τέχναις,dative-plural
+τέχνας,accusative-plural
+χώρα,nominative/vocative-singular
+χώρας,genitive-singular
+χώρᾳ,dative-singular
+χώραν,accusative-singular
+χῶραι,nominative/vocative-plural
+χωρῶν,genitive-plural
+χώραις,dative-plural
+χώρας,accusative-plural

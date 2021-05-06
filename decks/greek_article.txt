@@ -1,0 +1,17 @@
+τῶν,masculine/feminine/neutral-genitive-plural 
+τόν,masculine-accusative-singular
+τήν,feminine-accusative-singular
+ό,masculine-nominative-singular
+ή,feminine-nominative-singular
+τό,neutral-nominative/accusative-singular
+τούς,masculine-accusative-plural
+τάς,feminine-accusative-plural
+τού,masculine/neutral-genitive-singular
+τῆς,feminine-genitive-singular
+τῷ,masculine/neutral-dative-singular
+τῇ,feminine-dative-singular
+οί,masculine-nominative-plural
+αί,feminine-nominative-plural
+τά,neutral-nominative/accusative-plural
+τοῖς,masculine/neutral-dative-plural
+ταῖς,feminine-dative-plural

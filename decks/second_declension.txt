@@ -1,0 +1,17 @@
+λόγος,nominative-singular
+λόγου,genitive-singular
+λόγω,dative-singular
+λόγον,accusative-singular
+λόγε,vocative-singular
+λόγοι,nominative/vocative-plural
+λόγων,genitive-plural
+λόγοις,dative-plural
+λόγους,accusative-plural
+ἔργον,nominative/vocative-singular
+ἔργου,genitive-singular
+ἔργῳ,dative-singular
+ἔργον,accusative-singular
+ἔργα,nominative/vocative-plural
+ἔργων,genitive-plural
+ἔργοις,dative-plural
+ἔργα,accusative-plural
