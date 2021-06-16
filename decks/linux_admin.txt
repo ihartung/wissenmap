@@ -1,0 +1,9 @@
+uniq
+sort
+last
+|
+>
+sed
+du
+cut
+tr
