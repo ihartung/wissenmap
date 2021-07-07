@@ -1,25 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
+import Landing from './landing.js';
+import Deck from './deck.js';
+
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+	  <Switch>
+	  <Route path='/deck/:id' component={Deck}/>
+	  <Route path='/' component={Landing}/>
+	  </Switch>
+    </Router>
   );
 }
 
 export default App;
+
+/*
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+*/
+

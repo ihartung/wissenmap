@@ -1,3 +1,3 @@
 export default {
-	root: 'http://localhost.com'
+	root: 'http://localhost:3000'
 }
