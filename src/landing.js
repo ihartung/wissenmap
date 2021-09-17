@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import GoogleSocialAuth from './googleLogin.js';
 import {Button} from '@material-ui/core';
 import routes from './routes.js';
 import DeckForm from './form.js';
@@ -29,7 +30,6 @@ export default function Landing(){
 
 	return (
 		<div>
-		<DeckForm create='true'/>
 		<ul>
 		{decks.map(deck => (
 			<li key={deck.pk}>
@@ -37,6 +37,9 @@ export default function Landing(){
 			</li>
 		))}
 		</ul>
+		{localStorage.getItem('accesstoken')?
+			<DeckForm create='true'/>:
+			<GoogleSocialAuth/>}
 		</div>
 	)
 }
