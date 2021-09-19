@@ -1,3 +1,3 @@
 export default {
-	root: 'http://localhost:3000'
+	root: 'https://wissenmap.hartung.dev/app'
 }

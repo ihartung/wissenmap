@@ -9,22 +9,22 @@ import axios from 'axios';
 export default function Landing(){
 
 	const [decks, setDecks] = useState([]);
-	
+
 	useEffect(async ()=>{
-		axios({
-			method: 'get',
-			url: routes.root + '/decks',
-		}).then(result => {
-			setDecks(result.data);
-		});
 		if(!localStorage.getItem('csrftoken')){
-		axios({
-			method: 'get',
-			url: routes.root + '/csrf',
-		}).then(result => {
-			localStorage.removeItem('csrftoken');
-			localStorage.setItem('csrftoken', result.data.csrfToken);
-		});
+			axios({
+				method: 'get',
+				url: routes.root + '/csrf',
+			}).then(result => {
+				localStorage.removeItem('csrftoken');
+				localStorage.setItem('csrftoken', result.data.csrfToken);
+				axios({
+					method: 'get',
+					url: routes.root + '/decks',
+				}).then(result => {
+					setDecks(result.data);
+				});
+			});
 		}
 	},[]);
 
