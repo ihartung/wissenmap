@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import {Button, Grid, FormControl} from '@material-ui/core'
-import {spacing} from '@material-ui/system'
+import {Button, Grid, FormControl} from '@mui/material'
+import {spacing} from '@mui/material'
 import routes from './routes.js';
 import axios from 'axios';
 
