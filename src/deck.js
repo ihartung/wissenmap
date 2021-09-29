@@ -3,8 +3,6 @@ import {FormControlLabel, Box, Card, Button, Switch, CardActions, CardActionArea
 import {makeStyles} from '@mui/styles';
 import {Grid, GridSpacing} from '@mui/material';
 import routes from './routes.js';
-import DeckForm from './form.js';
-import CustomBar from './customBar.js';
 import axios from 'axios';
 import {useParams, useHistory}  from 'react-router-dom';
 
@@ -30,26 +28,28 @@ const useStyles = makeStyles({
 });
 
 
-export default function Deck(){
-	const [cards, setCards] = useState([]);
+export default function Deck(props){
+
+	const {handleCards} = props;
 	const [index, setIndex] = useState(0);
+	const [cards, setCards] = useState(0);
 	const [side, setSide] = useState(0);
 	const [reverse, setReverse] = useState(false);
 	const [currentCard, setCurrentCard] = useState({'front':'', 'back':''});
 
-	const {id} = useParams();
+	const {id, handleDeck} = props; 
 
 	const classes = useStyles();
-	const history = useHistory();
 
 	useEffect(async ()=>{
 		axios({
 			method: 'get',
 			url: routes.root + '/deck/' + id,
 		}).then(result => {
-			setCards(result.data);
-			setCurrentCard({'front':result.data[0].front,'back':result.data[0].back});
-		});
+			setCards(result.data.cards);
+			setCurrentCard({'front':result.data.cards[0].front,'back':result.data.cards[0].back});
+			handleDeck(result.data);
+		}).catch(error=>console.log(error));
 	},[]);
 
 	const handleFlip = () => {
@@ -129,7 +129,6 @@ export default function Deck(){
 
 	return (
 		<div>
-		<CustomBar/>
 		<Box sx={{ flexGrow:1, marginTop:'16px'}}>
 		<Grid className={classes.trunk} spacing={2} container>
 		<Grid className={classes.directionButton} key={0} item>
@@ -160,6 +159,4 @@ export default function Deck(){
 			</Box>
 			</div>
 		)
-
-
 		}

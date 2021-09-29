@@ -4,7 +4,7 @@ import {spacing} from '@mui/material'
 import routes from './routes.js';
 import axios from 'axios';
 
-export default function DeckForm(props){
+export default function DeckSubmit(props){
 
 	const {create} = props;
 

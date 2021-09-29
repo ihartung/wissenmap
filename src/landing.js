@@ -1,8 +1,11 @@
 import {useState, useEffect} from 'react';
 import routes from './routes.js';
-import DeckForm from './form.js';
+import AuthButton from './authButton';
+import DeckSubmit from './submit.js';
+import DeckEdit from './edit.js';
+import Deck from './deck.js';
+import Select from './select.js';
 import axios from 'axios';
-import {Link, useLocation} from 'react-router-dom';
 import {createUseStyles} from 'react-jss';
 import CustomBar from './customBar.js';
 
@@ -18,14 +21,13 @@ const useStyles = createUseStyles({
 export default function Landing(){
 
 	const classes = useStyles();
+	const clearDeck = {title:'', id:-1, cards:[]};
 
-	const [decks, setDecks] = useState([]);
-	const location = useLocation();
+	const [deck, setDeck] = useState(clearDeck);
+	const [auth, setAuth] = useState(false);
+	const [selection, setSelection] = useState(-1);
 
-	useEffect(async ()=>{
-		if(location.pathname!=='/'){
-			return;
-		}
+	useEffect(()=>{
 		if(!localStorage.getItem('csrftoken')){
 			axios({
 				method: 'get',
@@ -33,33 +35,40 @@ export default function Landing(){
 			}).then(result => {
 				localStorage.removeItem('csrftoken');
 				localStorage.setItem('csrftoken', result.data.csrfToken);
-				axios({
-					method: 'get',
-					url: routes.root + '/decks',
-				}).then(result => {
-					setDecks(result.data);
-				});
-			});
-		} else {
-			axios({
-				method: 'get',
-				url: routes.root + '/decks',
-			}).then(result => {
-				setDecks(result.data);
-			});
+			}).catch(error=>console.log(error));
 		}
-	},[location.pathname]);
+	},[]);
+
+	const handleAuth = (status) => {
+		if(status == null){
+			setAuth(null);
+		} else {
+			setAuth(status);
+		}
+	}
+
+	const handleSelection = (index) => {
+		setSelection(index);
+		if(index==-1){
+			setDeck(clearDeck);
+		}
+	}
+
+	const handleDeck = (deck) => {
+		setDeck(deck);
+	}
 
 	return (
-		<div className={classes.ul}>
-		<CustomBar/>
-		<ul style={{listStyleType:'none'}}>
-		{decks.map(deck => (
-			<li key={deck.pk}>
-			<Link to={'/deck/' + deck.pk}>{deck.fields.title}</Link>
-			</li>
-		))}
-		</ul>
+		<div>
+		<CustomBar handleSelection={handleSelection} title={deck.title}/>
+		{ selection == -1 ?
+			<Select handleSelection={handleSelection}/>:
+			<Deck id={selection} handleDeck={handleDeck}/>}
+		{ !auth ? null:
+			selection == -1 ?
+				<DeckSubmit/>:
+				<DeckEdit deck={deck}/>}
+		<AuthButton handleAuth={handleAuth}/>
 		</div>
 	)
 }
