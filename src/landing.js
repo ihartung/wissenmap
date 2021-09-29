@@ -9,6 +9,11 @@ import axios from 'axios';
 import {createUseStyles} from 'react-jss';
 import CustomBar from './customBar.js';
 
+const getCSRFToken = async () => {
+    const response = await axios.get('/csrf');
+    axios.defaults.headers.post['X-CSRFToken'] = response.data.csrfToken;
+};
+
 const useStyles = createUseStyles({
 	ul: {
 		textAlign: 'center',
@@ -27,17 +32,9 @@ export default function Landing(){
 	const [auth, setAuth] = useState(false);
 	const [selection, setSelection] = useState(-1);
 
-	useEffect(()=>{
-		if(!localStorage.getItem('csrftoken')){
-			axios({
-				method: 'get',
-				url: routes.root + '/csrf',
-			}).then(result => {
-				localStorage.removeItem('csrftoken');
-				localStorage.setItem('csrftoken', result.data.csrfToken);
-			}).catch(error=>console.log(error));
-		}
-	},[]);
+	useEffect(() => {
+		getCSRFToken();
+	}, []);
 
 	const handleAuth = (status) => {
 		if(status == null){

@@ -6,23 +6,30 @@ import {createUseStyles} from 'react-jss';
 import { GoogleLogout, GoogleLogin } from 'react-google-login';
 
 
+const resetCSRF = () => {
+	let tmp = document.cookie.split('; ')
+		.find(entry => entry.startsWith('csrf'))
+		.split('=')[1];
+	axios.defaults.headers.post['X-CSRFToken'] = tmp;
+	console.log('new csrf = ' + tmp);
+
+}
+
+
 const clientId ='43484635742-eaa1v6v83q2unc17ub76ggnaaqi2ea1v.apps.googleusercontent.com';
 
 export default function AuthButton(props){
 
 	const handleResponse = (response) => {
 		console.log(response);
-		var headers = {'X-CSRFToken':localStorage.getItem('csrftoken'), 'Authorization':response.tokenId}
 		var data = {'access_token':response.accessToken}
 		axios({ 
-			url: routes.root + '/rest-auth/google/',
+			url: routes.root + '/rest-auth/google/login/',
 			method: 'post',
-			data: data,
-			headers: headers}).then(result => {
-				localStorage.removeItem('authtoken');
-				localStorage.setItem('authtoken', result.data.csrfToken);
+			data: data}).then(result => {
+				localStorage.setItem('token', result.key);
 				props.handleAuth(true);
-				console.log(result);
+				resetCSRF();
 				return result.status;
 			}).catch(error => console.log(error));
 	}
@@ -30,22 +37,18 @@ export default function AuthButton(props){
 	const onSuccess = () => {
 		console.log('Logout made successfully');
 		//alert('Logout made successfully ✌');
-		var headers = {'X-CSRFToken':localStorage.getItem('csrftoken')}
-		var data = {'csrfmiddlewaretoken':localStorage.getItem('csrftoken')};
 		axios({ 
 			url: routes.root + '/rest-auth/logout/',
 			method: 'post',
-			data: data,
-			headers: headers,
-			}).then(() => {
-				localStorage.removeItem('authtoken');
-				props.handleAuth(false);
-			}).catch(error => console.log(error));
+		}).then(() => {
+			localStorage.removeItem('token');
+			props.handleAuth(false);
+		}).catch(error => console.log(error));
 	};
 
 	return (
 
-		localStorage.getItem('authtoken') == null ?
+		localStorage.getItem('token') == null ?
 		<GoogleLogin
 		clientId={clientId}
 		buttonText="LOGIN WITH GOOGLE"

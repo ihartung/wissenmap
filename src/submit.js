@@ -33,10 +33,9 @@ export default function DeckSubmit(props){
 
 		data.append('title', deckSubmission.title)
 		data.append('cards', deckSubmission.file)
+		let headers = {'Authorization': localStorage.getItem('token')}
 
-		var headers = {'X-CSRFToken':localStorage.getItem('csrftoken')}
-
-		axios.post(routes.root + '/deck', data, {headers})
+		axios.post(routes.root + '/create', data)
 			.then()
 			.catch(e => {
 				console.log(e);

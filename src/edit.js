@@ -11,9 +11,7 @@ export default function DeckEdit(props){
 		
 		var data = new FormData();
 
-		var headers = {'X-CSRFToken':localStorage.getItem('csrftoken')}
-
-		axios.update(routes.root + '/deck', data, {headers})
+		axios.update(routes.root + '/deck', data)
 			.then()
 			.catch(e => {
 				console.log(e);
