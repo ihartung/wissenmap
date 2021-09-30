@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import routes from './routes.js';
 import AuthButton from './authButton';
+import {resetCSRF} from './authButton';
 import DeckSubmit from './submit.js';
 import DeckEdit from './edit.js';
 import Deck from './deck.js';
@@ -33,15 +34,14 @@ export default function Landing(){
 	const [selection, setSelection] = useState(-1);
 
 	useEffect(() => {
-		getCSRFToken();
+		if(localStorage.getItem('token') !== null){
+			setAuth(true);
+			resetCSRF();
+		}
 	}, []);
 
 	const handleAuth = (status) => {
-		if(status == null){
-			setAuth(null);
-		} else {
-			setAuth(status);
-		}
+		setAuth(status);	
 	}
 
 	const handleSelection = (index) => {
@@ -64,7 +64,7 @@ export default function Landing(){
 		{ !auth ? null:
 			selection == -1 ?
 				<DeckSubmit/>:
-				<DeckEdit deck={deck}/>}
+				<DeckEdit handleDeck={handleDeck} deck={deck}/>}
 		<AuthButton handleAuth={handleAuth}/>
 		</div>
 	)

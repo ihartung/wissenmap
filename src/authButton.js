@@ -6,7 +6,7 @@ import {createUseStyles} from 'react-jss';
 import { GoogleLogout, GoogleLogin } from 'react-google-login';
 
 
-const resetCSRF = () => {
+export const resetCSRF = () => {
 	let tmp = document.cookie.split('; ')
 		.find(entry => entry.startsWith('csrf'))
 		.split('=')[1];
@@ -27,7 +27,7 @@ export default function AuthButton(props){
 			url: routes.root + '/rest-auth/google/login/',
 			method: 'post',
 			data: data}).then(result => {
-				localStorage.setItem('token', result.key);
+				localStorage.setItem('token', result.data.key);
 				props.handleAuth(true);
 				resetCSRF();
 				return result.status;
