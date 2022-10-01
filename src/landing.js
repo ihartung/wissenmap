@@ -11,7 +11,7 @@ import {createUseStyles} from 'react-jss';
 import CustomBar from './customBar.js';
 
 const getCSRFToken = async () => {
-    const response = await axios.get('/csrf');
+    const response = await axios({method: 'get', url: routes.root + '/csrf'});
     axios.defaults.headers.post['X-CSRFToken'] = response.data.csrfToken;
 };
 
@@ -37,6 +37,8 @@ export default function Landing(){
 		if(localStorage.getItem('token') !== null){
 			setAuth(true);
 			resetCSRF();
+		} else {
+			getCSRFToken();
 		}
 	}, []);
 

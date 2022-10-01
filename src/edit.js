@@ -58,7 +58,6 @@ export default function DeckEdit(props){
 		<Typography>Edit Cards</Typography>
 		</AccordionSummary>
 		<AccordionDetails>
-		<Button>Submit</Button>
 		<div style={{height:400}}>
 		<DataGrid
 		checkboxSelection

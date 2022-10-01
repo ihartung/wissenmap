@@ -1,0 +1,8 @@
+Teile,parts
+Sumpf,swamp
+dicht,thick
+bedeckt,cover
+dünn,sparse
+besiedelt,settle,colonize
+Gebiet,territory
+
