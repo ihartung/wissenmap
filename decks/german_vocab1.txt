@@ -1,25 +1,25 @@
-Dőrfer,village
-legen,lay
-Weise,way,tune/melody
-Gebäude,building
-verbunden,form an alliance
-umgibt,surrounded
-Raum,room
-sei,possesive pronoun
-Schutz,helmet
-Feuergefahr,fire danger/emergency
-unkenntnis,ignorance
-Bauen,to build
-Bruchsteine,broken voice
-Ziegel,Brick
-verwenden,use for/spend
-unbehauenes,hew around
-Holz,wood
-gefälliges,obliging, helpful
-Aussehen,look
-achten,respect
-Feld,field
-ziehen,pull,draw
-verbringen,spend
-Jager,hunting,hunt
-Nichtstun,idleness
+Dőrfer:village;
+legen:lay;
+Weise:way:tune/melody;
+Gebäude:building;
+verbunden:form an alliance;
+umgibt:surrounded;
+Raum:room;
+sei:possesive pronoun;
+Schutz:helmet;
+Feuergefahr:fire danger/emergency;
+unkenntnis:ignorance;
+Bauen:to build;
+Bruchsteine:broken voice;
+Ziegel:Brick;
+verwenden:use for/spend;
+unbehauenes:hew around;
+Holz:wood;
+gefälliges:obliging: helpful;
+Aussehen:look;
+achten:respect;
+Feld:field;
+ziehen:pull:draw;
+verbringen:spend;
+Jager:hunting:hunt;
+Nichtstun:idleness;

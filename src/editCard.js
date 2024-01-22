@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {DataGrid} from '@mui/x-data-grid'
 import {Typography, Button, Accordion, AccordionSummary, AccordionDetails} from '@mui/material'
 import routes from './routes.js';
+import cardForm from './cardForm.js';
 import axios from 'axios';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -31,14 +32,14 @@ const prepareRows = (rows) => {
 
 export default function DeckEdit(props){
 
-	const {deck} = props;
+	const {card} = props;
 
-	const editDeck = e => {
+	const editCard = e => {
 		e.preventDefault();
 
 		var data = new FormData();
 
-		axios.update(routes.root + '/deck', data)
+		axios.update(routes.root + '/card', data)
 			.then((result) => {
 				props.handleDeck(result.data);
 			})
@@ -55,17 +56,11 @@ export default function DeckEdit(props){
 		aria-controls="panel1a-content"
 		id="panel1a-header"
 		>
-		<Typography>Edit Cards</Typography>
+		<Typography>Edit Card</Typography>
 		</AccordionSummary>
 		<AccordionDetails>
 		<div style={{height:400}}>
-		<DataGrid
-		checkboxSelection
-		disableSelectionOnClick
-		pageSize={5}
-		rowsPerPageOptions={[5]}
-		rows={prepareRows(deck.cards)}
-		columns={columns}/>
+		<cardForm>
 		</div>
 		</AccordionDetails>
 		</Accordion>

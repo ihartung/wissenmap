@@ -1,32 +1,32 @@
-ergeben,devoted
-Gerade,straight
-Tapfersten,brave-sten
-Kriegslustigsten,war mongering
-rühren,stir,move
-Sorge,worry,concern
-Schwachen,weak pl.
-Hauswesen,housework
-überlassen,cede,leave
-faulengen,idle,lounge
-seltsamer,abnormal,strange
-widerspruch,contradiction,protest,appeal
-wesens,being,creature,nature
-zugleich,at the same time
-Ruhe,rest,calm,quiet
-bruchstückhaftes,framentary
-überliefert,traditional
-wurde,was
-solche,such
-Beschreibungen,description
-angewiesen,dependent
-Dabei,thereby,but actually
-bedenken,consider,give,reflect
-Sitten,custom
-Gebräuchen,usages
-Anschauung,experience,view
-Kannente,know
-bezog,covered
-Kenntnisse,knowledge
-literarischen,literary
-Quellen,spring,source
-Gallischen,gaul
+ergeben:devoted;
+Gerade:straight;
+Tapfersten:brave-sten;
+Kriegslustigsten:war mongering;
+rühren:stir:move;
+Sorge:worry:concern;
+Schwachen:weak pl.;
+Hauswesen:housework;
+überlassen:cede:leave;
+faulengen:idle:lounge;
+seltsamer:abnormal:strange;
+widerspruch:contradiction:protest:appeal;
+wesens:being:creature:nature;
+zugleich:at the same time;
+Ruhe:rest:calm:quiet;
+bruchstückhaftes:framentary;
+überliefert:traditional;
+wurde:was;
+solche:such;
+Beschreibungen:description;
+angewiesen:dependent;
+Dabei:thereby:but actually;
+bedenken:consider:give:reflect;
+Sitten:custom;
+Gebräuchen:usages;
+Anschauung:experience:view;
+Kannente:know;
+bezog:covered;
+Kenntnisse:knowledge;
+literarischen:literary;
+Quellen:spring:source;
+Gallischen:gaul;

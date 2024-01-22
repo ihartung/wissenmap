@@ -3,11 +3,9 @@ import routes from './routes.js';
 import AuthButton from './authButton';
 import {resetCSRF} from './authButton';
 import DeckSubmit from './submit.js';
-import DeckEdit from './edit.js';
 import Deck from './deck.js';
 import Select from './select.js';
 import axios from 'axios';
-import {createUseStyles} from 'react-jss';
 import CustomBar from './customBar.js';
 
 const getCSRFToken = async () => {
@@ -15,18 +13,8 @@ const getCSRFToken = async () => {
     axios.defaults.headers.post['X-CSRFToken'] = response.data.csrfToken;
 };
 
-const useStyles = createUseStyles({
-	ul: {
-		textAlign: 'center',
-	},
-	title: {
-		marginRight: '10px',
-	}
-});
-
 export default function Landing(){
 
-	const classes = useStyles();
 	const clearDeck = {title:'', id:-1, cards:[]};
 
 	const [deck, setDeck] = useState(clearDeck);
@@ -48,7 +36,7 @@ export default function Landing(){
 
 	const handleSelection = (index) => {
 		setSelection(index);
-		if(index==-1){
+		if(index === -1){
 			setDeck(clearDeck);
 		}
 	}
@@ -60,13 +48,13 @@ export default function Landing(){
 	return (
 		<div>
 		<CustomBar handleSelection={handleSelection} title={deck.title}/>
-		{ selection == -1 ?
+		{ selection === -1 ?
 			<Select handleSelection={handleSelection}/>:
-			<Deck id={selection} handleDeck={handleDeck}/>}
+			<Deck auth={auth} id={selection} handleDeck={handleDeck}/>}
 		{ !auth ? null:
-			selection == -1 ?
+			selection === -1 ?
 				<DeckSubmit/>:
-				<DeckEdit handleDeck={handleDeck} deck={deck}/>}
+				null}
 		<AuthButton handleAuth={handleAuth}/>
 		</div>
 	)

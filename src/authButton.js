@@ -1,10 +1,6 @@
-import {useState, useEffect} from 'react';
-import Box from '@mui/material/Box';
-import routes from './routes.js';
-import axios from 'axios';
-import {createUseStyles} from 'react-jss';
 import { GoogleLogout, GoogleLogin } from 'react-google-login';
-
+import axios from 'axios';
+import routes from './routes.js';
 
 export const resetCSRF = () => {
 	let tmp = document.cookie.split('; ')
